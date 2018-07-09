@@ -1,7 +1,12 @@
 h1 {
 	padding: 1%;
+	text-align: center;
 }
 
 .wbdv-actions {
 	color: blue;
+}
+
+.wbdv-actions:hover {
+	cursor: pointer;
 }
