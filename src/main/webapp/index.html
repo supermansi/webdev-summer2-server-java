@@ -1,17 +1,56 @@
-<h1>Login</h1>
-
-<label for="username">
-	Username
-</label>
-<input type="text" id="username">
-
-<br>
-
-<label for="password">
-	Password&nbsp;
-</label>
-<input type="password" id="password">
-
-<br>
-
-<button>Login</button>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Course Management</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div>
+		<h1>Course Management</h1>
+	</div>
+	<div>
+		Existing User? <button id="login-btn">Login</button>
+		<br>
+		New User? <button id="register-btn">Register</button>
+		<br>
+		<button id="admin-btn">User Admin</button>
+		<br>
+		<button id="profile-btn">Profile</button>
+	</div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+  	var registerBtn =  $('#register-btn');
+  	var loginBtn = $('#login-btn');
+  	var adminBtn = $('#admin-btn');
+  	var profileBtn = $('#profile-btn');
+  	
+  	loginBtn.click(redirectLogin);
+  	registerBtn.click(redirectRegister);
+  	adminBtn.click(redirectAdmin);
+  	profileBtn.click(redirectProfile);
+  	
+  	function redirectLogin() {
+  		console.log('here');
+  		window.location.replace("jquery/components/login/login.template.client.html");
+  	}
+  	
+  	function redirectRegister(){
+  		window.location.replace("jquery/components/register/register.template.client.html");
+  	}
+  	
+  	function redirectAdmin() {
+  		window.location.replace("jquery/components/admin/user-admin.template.client.html");
+  	}
+  	
+  	function redirectProfile() {
+  		window.location.replace("jquery/components/profile/profile.template.client.html");
+  	}
+  </script>
+</body>
+</html>
