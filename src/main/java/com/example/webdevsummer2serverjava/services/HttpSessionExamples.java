@@ -4,7 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class HttpSessionExamples {
 	
 	@GetMapping("/api/session/set/{attr}/{value}")
@@ -12,6 +14,7 @@ public class HttpSessionExamples {
 			@PathVariable("attr") String attr,
 			@PathVariable("value") String value,
 			HttpSession session) {
+		
 		session.setAttribute(attr, value);
 		return attr + " = " + value;
 	}
