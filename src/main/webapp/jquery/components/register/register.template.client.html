@@ -4,9 +4,10 @@
 		<title>Register | Course Management</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<link rel="stylesheet" href="register.style.client.css">
 	</head>
 	<body>
-		<div class="container col-4" class="row">
+		<div class="container col-4 form-control" id="content">
 			<div id="register">
 				<h1>Register</h1>
 			</div>
@@ -16,7 +17,8 @@
 				</label>
 				<input type="text" 
 						id="username"
-						placeholder="alice">
+						placeholder="alice"
+						class="form-control">
 			</div>
 			<div>
 				<label for="password">
@@ -24,7 +26,8 @@
 				</label>
 				<input type="password"
 						id="password"
-						placeholder="********">
+						placeholder="********"
+						class="form-control">
 			</div>
 			<div>
 				<label for="password2">
@@ -32,7 +35,8 @@
 				</label>
 				<input type="password"
 						id="password2"
-						placeholder="********">
+						placeholder="********"
+						class="form-control">
 			</div>
 			<div>
 				<label for="firstName">
@@ -40,7 +44,8 @@
 				</label>
 				<input type="text"
 						id="firstName"
-						placeholder="Alice">
+						placeholder="Alice"
+						class="form-control">
 			</div>
 			<div>
 				<label for="lastName">
@@ -48,10 +53,11 @@
 				</label>
 				<input type="text"
 						id="lastName"
-						placeholder="Wonderland">
+						placeholder="Wonderland"
+						class="form-control">
 			</div>
-			<button id="registerBtn">Register</button> <br>
-			Already Signed Up? <button id="login-btn">Login here!</button>
+			<button class="btn btn-outline-primary" id="registerBtn">Register</button>
+			<button class="btn btn-outline-primary" id="login-btn">Already Signed Up? Login</button>
 		</div>
 		<script
 		  src="https://code.jquery.com/jquery-3.3.1.min.js"

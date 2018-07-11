@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login | Course Management</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<title>Login | Course Management</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<link rel="stylesheet" href="login.style.client.css">
 </head>
 <body>
-	<div class="container col-5">
+	<div class="container col-4 form-control" id="content">
 		<div>
 			<h1>Login</h1>
 		</div>
@@ -14,16 +15,18 @@
 			<label for="username">Username</label>
 			<input type="text"
 					id="username"
-					placeholder="alice">
+					placeholder="alice"
+					class="form-control">
 		</div>
 			<div>
 			<label for="password">Password</label>
 			<input type="password"
 					id="password"
-					placeholder="********">
+					placeholder="********"
+					class="form-control">
 		</div>
-		<button id="loginBtn">Login</button> <br>
-		Not a user yet? <button id="register-btn">Register here!</button>
+		<button class="btn btn-outline-primary" id="loginBtn">Login</button>
+		<button class="btn btn-outline-primary" id="register-btn">Not yet a user? Register here!</button>
 	</div>
 	<script src="login.controller.client.js"></script>
 	<script
