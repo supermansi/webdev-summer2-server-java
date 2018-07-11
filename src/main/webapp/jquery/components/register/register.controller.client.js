@@ -1,4 +1,5 @@
 (function (){
+	
 	var usernameFld = $('#username');
 	var passwordFld = $('#password');
 	var password2Fld = $('#password2');
@@ -35,7 +36,7 @@
 	}
 	
 	function registrationSuccessful() {
-		window.location.replace('/jquery/components/profile/profile.template.client.html');
+		//window.location.replace('/jquery/components/profile/profile.template.client.html');
 	}
 	
 	function registrationFailed() {

@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<title>Profile | Course Management</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<link rel="stylesheet" href="profile.style.client.css">
 	</head>
 	<body>
 		<div class="container col-4 form-control" id="content">
@@ -29,6 +32,31 @@
 						placeholder="Wonderland"
 						class="form-control">
 			</div>
+			<div>
+				<label for="email">Email</label>
+				<input type="email"
+						id="email"
+						placeholder="alice@wonderland.com"
+						class="form-control">
+			</div>
+			<div>
+				<label for="dateOfBirth">Date Of Birth</label>
+				<input type="date"
+						id="dateOfBirth"
+						class="form-control">
+			</div>
+			<div>
+				<label for="role">Role</label>
+				<select class="btn btn-outline-primary" id="role">
+					<option>
+						Student
+					</option>
+					<option>
+						Faculty
+					</option>
+				</select>
+			</div>
+			<button class="btn btn-outline-primary" id="updateBtn">Update</button>
 		</div>
 		<script
 		  src="https://code.jquery.com/jquery-3.3.1.min.js"

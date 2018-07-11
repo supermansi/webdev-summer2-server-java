@@ -1,4 +1,7 @@
 (function(){
+	
+	var userServiceClient = new UserServiceClient();
+	
 	var $usernameFld = $('#username');
 	var $passwordld = $('#password');
 	var $firstNameFld = $('#firstName');
@@ -6,16 +9,19 @@
 	var $roleFld = $('role');
 	var tbody;
 	
-	function main() {
+	function init() {
 		//tbody = $('tbody');
 		//var promise = fetch('https://localhost:8080');
-		findAllUsers()
+		userServiceClient
+		.findAllUsers()
 		.then(renderUsers);
 	}
 	
-	main();
+	init();
 	
-	function createUser() {}
+	function createUser(event) {
+		console.log(event)
+	}
 	
 	function findAllUsers() {
 		var url = "/api/user";
@@ -27,9 +33,14 @@
 	
 	function findUserById() {}
 	
-	function updateUser() {}
+	function updateUser(even) {
+		console.log(event);
+		var $button = $(event.currentTarget);
+		
+	}
 	
 	function deleteUser(event) {
+		//alert("Are you sure you want to delete?");
 		console.log(event);
 		var $button = $(event.currentTarget);
 		var id = $button.attr('id');
@@ -71,6 +82,10 @@
 			tr.append(td);
 			
 			var td = $('<td>');
+			td.append("07/05/1992")
+			tr.append(td);
+			
+			var td = $('<td>');
 			td.append("test@example.com");
 			tr.append(td);
 			
@@ -78,11 +93,15 @@
 			td.append("Student");
 			tr.append(td);
 			
-			var deleteBtn = $('<button class="btn btn-outline-primary">Delete</button>');
+			var deleteBtn = $('<button class="btn btn-outline-primary fas fa-trash"></button>');
 			deleteBtn.click(deleteUser);
 			deleteBtn.attr('id', user.id);
+			var updateBtn = $('<button class="btn btn-outline-primary fas fa-edit"></button>');
+			updateBtn.click(updateUser);
+			updateBtn.attr('id', user.id);
 			var td = $('<td>');
-			td.append(deleteBtn);
+			td.append(deleteBtn);	
+			td.append(updateBtn)
 			tr.append(td);
 			
 			tbody.append(tr);

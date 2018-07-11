@@ -7,10 +7,6 @@ h1 {
 	margin-top: 2%;
 }
 
-.wbdv-actions {
-	color: blue;
-}
-
-.wbdv-actions:hover {
-	cursor: pointer;
+input, #role {
+	margin-bottom: 5%;
 }
