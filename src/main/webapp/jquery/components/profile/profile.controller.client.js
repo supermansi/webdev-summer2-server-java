@@ -1,10 +1,7 @@
 (function(){
-	var $username, $firstName;
-	var $updateBtn;
-	var $currentUser = null;
-	
-	function  init() {
-		$username = $('#username');
-		$firstName = $('#firstName');
-	}
+	fetch('/checkLogin',{
+		'credentials' : 'include'
+	}).then(function(response){
+		console.log(response);
+	});
 })();
