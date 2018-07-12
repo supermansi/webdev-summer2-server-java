@@ -25,7 +25,6 @@ public class UserService {
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user, HttpSession session) {
-		
 		User cu = userRepository.save(user);		
 		session.setAttribute("currentUser", cu);		
 		return cu;
@@ -77,5 +76,5 @@ public class UserService {
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
-	}		
+	}
 }

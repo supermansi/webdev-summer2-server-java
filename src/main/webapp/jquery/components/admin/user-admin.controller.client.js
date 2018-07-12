@@ -2,13 +2,6 @@
 	
 	var userServiceClient = new UserServiceClient();
 	
-	var $usernameFld = $('#username');
-	var $passwordld = $('#password');
-	var $firstNameFld = $('#firstName');
-	var $lastNameFld = $('#lastName');
-	var $roleFld = $('role');
-	var tbody;
-	
 	function init() {
 		//tbody = $('tbody');
 		//var promise = fetch('https://localhost:8080');
@@ -16,11 +9,28 @@
 		.findAllUsers()
 		.then(renderUsers);
 	}
-	
 	init();
 	
+	var $usernameFld = $('#username');
+	var $passwordld = $('#password');
+	var $firstNameFld = $('#firstName');
+	var $lastNameFld = $('#lastName');
+	var $roleFld = $('role');
+	var tbody;
+	
+	var $createUserBtn = $('#wbdv-create');
+	$createUserBtn.click(createUser);
+	
 	function createUser(event) {
-		console.log(event)
+		console.log(event);
+	    var $button = $(event.currentTarget);
+	    var id = $button.attr('id');
+		console.log(id);
+		
+		var usernameStr = $usernameFld.val();
+		var passwordStr = $passwordFld.val();
+		var firstNameStr =$firstNameFld.val();
+		var passwordStr = passwordFld.val();
 	}
 	
 	function findAllUsers() {
@@ -41,18 +51,17 @@
 	
 	function deleteUser(event) {
 		//alert("Are you sure you want to delete?");
-		console.log(event);
-		var $button = $(event.currentTarget);
-		var id = $button.attr('id');
-		var url = "/api/user/" + id;
-		
-		fetch(url, {
-			'method' : 'delete'
-		}).then(function(){
-			findAllUsers()
-			.then(renderUsers);
-		})
-//		alert("Are you sure you want to delete user?");
+	    console.log(event);
+	    var $button = $(event.currentTarget);
+	    var id = $button.attr('id');
+
+	    userServiceClient
+	      .deleteUser(id)
+	      .then(function () {
+	        userServiceClient
+	          .findAllUsers()
+	          .then(renderUsers);
+	      });
 	}
 	
 	function renderUser() {}
@@ -83,6 +92,10 @@
 			
 			var td = $('<td>');
 			td.append("07/05/1992")
+			tr.append(td);
+			
+			var td = $('<td>');
+			td.append("(xxx)xxx-xxxx");
 			tr.append(td);
 			
 			var td = $('<td>');

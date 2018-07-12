@@ -1,17 +1,24 @@
 (function (){
+	var userServiceClient = new UserServiceClient();
 	
-	var usernameFld = $('#username');
-	var passwordFld = $('#password');
-	var password2Fld = $('#password2');
-	var registerBtn = $('#registerBtn');
+	var $usernameFld, $passwordFld,
+		$password2Fld, $registerBtn;
 	
-	registerBtn.click(registerUser);
+	$(main);
+	
+	function main() {
+		$usernameFld = $('#username');
+		$passwordFld = $('#password');
+		$password2Fld = $('#password2');
+		$registerBtn = $('#registerBtn');
+		$registerBtn.click(registerUser);
+	}
+	main();
 	
 	function registerUser() {
-		var usernameStr = usernameFld.val();
-		var passwordStr = passwordFld.val();
-		var password2Str = password2Fld.val();
-		
+		var usernameStr = $usernameFld.val();
+		var passwordStr = $passwordFld.val();
+		var password2Str = $password2Fld.val();
 		if(passwordStr != password2Str) {
 			alert('Passwords don\'t match!');
 		}
@@ -20,22 +27,16 @@
 			var userObj = {
 					'username': usernameStr,
 					'password' : passwordStr
-			}
+			};
 			
-			var userObjStr = JSON.stringify(userObj);
-			
-			fetch('/register', {
-				'method' : 'POST',
-				'body' : userObjStr,
-				'headers' : {
-					'content-type' : 'application/json'
-				},
-				'credentials' : 'include'
-			}).then(registrationSuccessful, registrationFailed)
+			userServiceClient
+				.register(userObj)
+				.then(registrationSuccessful, registrationFailed)
 		}
 	}
 	
-	function registrationSuccessful() {
+	function registrationSuccessful(event) {
+		console.log(event);
 		//window.location.replace('/jquery/components/profile/profile.template.client.html');
 	}
 	

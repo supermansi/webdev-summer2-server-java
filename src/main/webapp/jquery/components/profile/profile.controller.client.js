@@ -7,8 +7,11 @@
 		$username = $('#username');
 		$firstName = $('#firstName');
 		$lastName = $('#lastName');
+		$updateBtn = $('#updateBtn');
 		
-		findUserById(32)
+		$updateBtn.click(updateUser);
+		
+		findUserById(52)
 		.then(renderUser);
 	}
 	init();
@@ -28,6 +31,10 @@
 	
 	function handleResponse() {
 		console.log(response);
+	}
+	
+	function updateUser() {
+		
 	}
 	
 	/*fetch('/checkLogin',{
