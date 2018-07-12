@@ -86,10 +86,10 @@ function UserServiceClient() {
 	}
 	
 	function logout() {
-		var url = "/api/login";
+		var url = "/api/logout";
 		return fetch(url, {
 			"method" : "POST",
-			body
+			"body" : 
 		})
 	}
 }
