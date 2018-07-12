@@ -15,11 +15,17 @@
 	var $passwordld = $('#password');
 	var $firstNameFld = $('#firstName');
 	var $lastNameFld = $('#lastName');
+	var $dateOfBirthFld = $('#dateOfBirthFld');
+	var $phoneFld = $('#phoneFld');
+	var $emailFld = $('#emailFld');
 	var $roleFld = $('role');
 	var tbody;
 	
 	var $createUserBtn = $('#wbdv-create');
+	var $updateUserBtn = $('#wbdv-update');
+	
 	$createUserBtn.click(createUser);
+	$updateUserBtn.click(updateUser);
 	
 	function createUser(event) {
 		console.log(event);
@@ -33,6 +39,20 @@
 		var passwordStr = passwordFld.val();
 	}
 	
+	function updateUser() {
+        $tbody=$(".wbdv-form");
+        var user = {
+           firstName: $tbody.find("#firstNameFld").val(),
+        lastName: $tbody.find("#lastNameFld").val(),
+        role: $tbody.find("#roleFld").val()
+        };
+
+
+        userService
+            .updateUser($userId, user)
+            .then(findAllUsers);
+    }
+	
 	function findAllUsers() {
 		var url = "/api/user";
 		return fetch(url)
@@ -41,7 +61,9 @@
 		})
 	}
 	
-	function findUserById() {}
+	function findUserById(id) {
+		return userServiceClient.findUserById(id);
+	}
 	
 	function updateUser(even) {
 		console.log(event);
@@ -64,7 +86,16 @@
 	      });
 	}
 	
-	function renderUser() {}
+	function renderUser(user) {
+		tbody = $('#wbdv-form');
+		 $tbody.find("#usernameFld").val(user.username);
+	     $tbody.find("#firstNameFld").val(user.firstName);
+	     $tbody.find("#lastNameFld").val(user.lastName);
+	     $tbody.find("#dateOfBirthFld").val(user.dateOfBirth);
+	     $tbody.find("#phoneFld").val(user.phone);
+	     $tbody.find("#emailFld").val(user.email);
+	     $tbody.find("#roleFld").val(user.role);
+	}
 	
 	function renderUsers(users) {
 		console.log(users);

@@ -25,7 +25,8 @@ public class UserService {
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user, HttpSession session) {
-		User cu = userRepository.save(user);		
+		System.out.println(user.getFirstName());
+		User cu = userRepository.save(user);
 		session.setAttribute("currentUser", cu);		
 		return cu;
 	}
@@ -45,6 +46,7 @@ public class UserService {
 	@GetMapping("/profile")
 	public Optional<User> profile(HttpSession session) {
 		User currentUser = (User) session.getAttribute("currentUser");
+		System.out.println(currentUser.getId());
 		return userRepository.findById(currentUser.getId());
 	}
 	
@@ -77,4 +79,10 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
+	
+	@PostMapping("/api/logout")
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
+
 }

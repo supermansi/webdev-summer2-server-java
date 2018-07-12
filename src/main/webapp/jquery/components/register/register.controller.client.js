@@ -37,7 +37,7 @@
 	
 	function registrationSuccessful(event) {
 		console.log(event);
-		//window.location.replace('/jquery/components/profile/profile.template.client.html');
+		window.location.replace('/jquery/components/profile/profile.template.client.html');
 	}
 	
 	function registrationFailed() {
