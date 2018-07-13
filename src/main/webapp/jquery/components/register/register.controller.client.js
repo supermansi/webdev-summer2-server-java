@@ -11,7 +11,7 @@
 		$passwordFld = $('#password');
 		$password2Fld = $('#password2');
 		$registerBtn = $('#registerBtn');
-		$registerBtn.click(registerUser);
+		$registerBtn.unbind('click').click(registerUser);
 	}
 	main();
 	
@@ -19,6 +19,7 @@
 		var usernameStr = $usernameFld.val();
 		var passwordStr = $passwordFld.val();
 		var password2Str = $password2Fld.val();
+		console.log("clicked!");
 		if(passwordStr != password2Str) {
 			alert('Passwords don\'t match!');
 		}
@@ -35,8 +36,7 @@
 		}
 	}
 	
-	function registrationSuccessful(event) {
-		console.log(event);
+	function registrationSuccessful() {
 		window.location.replace('/jquery/components/profile/profile.template.client.html');
 	}
 	

@@ -25,7 +25,4 @@ public class HttpSessionExamples {
 			HttpSession session) {
 		return (String) session.getAttribute(attr);
 	}
-
-
-
 }

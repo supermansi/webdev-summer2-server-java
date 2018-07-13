@@ -8,8 +8,8 @@ function UserServiceClient() {
     
     this.register = register;
     this.login = login;
-    /*this.profile = profile;*/
-    this.logout = logout;
+    this.profile = profile;
+    //this.logout = logout;
 
 	function createUser(user) {
     	var url = "/api/user";
@@ -40,9 +40,11 @@ function UserServiceClient() {
 	  
 	function updateUser(id, user) {
 		var url = "/api/user" + id;
+
 		return fetch(url, {
 			"method" : "PUT",
 			"body" : JSON.stringify(user),
+			"credentials" : "include",
 			"headers" : {
 				"content-type" : "application/json"
 			}
@@ -84,12 +86,26 @@ function UserServiceClient() {
 			}
 		});
 	}
+
+	function profile(user) {
+		var url = "/api/profile/" + user.username;
+		return fetch(url, {
+			"method" : "POST",
+			"body" : JSON.stringify(user),
+			"credentials" : "include",
+			"headers" : {
+				"content-type" : "application/json"
+			}
+		})
+	}
+
+
 	
-	function logout() {
+/*	function logout() {
 		var url = "/api/logout";
 		return fetch(url, {
 			"method" : "POST",
 			"body" : 
 		})
-	}
+	}*/
 }

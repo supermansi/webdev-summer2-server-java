@@ -1,5 +1,7 @@
 (function (){
 	var $username, $password, $loginBtn;
+
+	var userServiceClient = new UserServiceClient();
 	
 	function init() {
 		$username = $('#username');
@@ -12,19 +14,15 @@
 	init();
 	
 	function login() {
+		console.log("clicked!");
 		var user = {
 				"username" : $username.val(),
 				"password" : $password.val()
 		}
 		
-		fetch('/login', {
-			"method" : "POST",
-			"body" : JSON.stringify(user),
-			"credentials" : "include",
-			"headers" : {
-				"content-type" : "application/json"
-			}
-		}).then(navigateToProfile);
+		userServiceClient
+			.login(user)
+			.then(navigateToProfile);
 	}
 	
 	function navigateToProfile() {

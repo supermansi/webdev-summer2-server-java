@@ -11,14 +11,14 @@
 	}
 	init();
 	
-	var $usernameFld = $('#username');
-	var $passwordld = $('#password');
-	var $firstNameFld = $('#firstName');
-	var $lastNameFld = $('#lastName');
+	var $usernameFld = $('#usernameFld');
+	var $passwordFld = $('#passwordFld');
+	var $firstNameFld = $('#firstNameFld');
+	var $lastNameFld = $('#lastNameFld');
 	var $dateOfBirthFld = $('#dateOfBirthFld');
 	var $phoneFld = $('#phoneFld');
 	var $emailFld = $('#emailFld');
-	var $roleFld = $('role');
+	var $roleFld = $('#roleFld');
 	var tbody;
 	
 	var $createUserBtn = $('#wbdv-create');
@@ -36,8 +36,32 @@
 		var usernameStr = $usernameFld.val();
 		var passwordStr = $passwordFld.val();
 		var firstNameStr =$firstNameFld.val();
-		var passwordStr = passwordFld.val();
+		var lastNameStr = $lastNameFld.val();
+		var dateOfBirthStr = $dateOfBirthFld.val();
+		var phoneStr = $phoneFld.val();
+		var emailStr = $emailFld.val();
+		var roleStr = $roleFld.val();
+
+		var userObj = {
+			'username': usernameStr,
+			'password' : passwordStr,
+			'firstName' : firstNameStr,
+			'lastName' : lastNameStr,
+			'dateOfBirth' : dateOfBirthStr,
+			'phone' : phoneStr,
+			'email' : emailStr,
+			'role' : roleStr
+		};
+
+		userServiceClient
+			.register(userObj)
+            .then(function () {
+                userServiceClient
+                    .findAllUsers()
+                    .then(renderUsers);
+            });
 	}
+
 	
 	function updateUser() {
         $tbody=$(".wbdv-form");
@@ -122,19 +146,19 @@
 			tr.append(td);
 			
 			var td = $('<td>');
-			td.append("07/05/1992")
+			td.append(user.dateOfBirth)
 			tr.append(td);
 			
 			var td = $('<td>');
-			td.append("(xxx)xxx-xxxx");
+			td.append(user.phone);
 			tr.append(td);
 			
 			var td = $('<td>');
-			td.append("test@example.com");
+			td.append(user.email);
 			tr.append(td);
 			
 			var td = $('<td>');
-			td.append("Student");
+			td.append(user.role);
 			tr.append(td);
 			
 			var deleteBtn = $('<button class="btn btn-outline-primary fas fa-trash"></button>');

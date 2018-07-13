@@ -39,7 +39,7 @@
 						class="form-control">
 			</div>
 			<button class="btn btn-outline-primary" id="registerBtn">Register</button>
-			<button class="btn btn-outline-primary" id="login-btn">Already Signed Up? Login</button>
+			<button type="button" class="btn btn-outline-primary" id="login-btn">Already Signed Up? Login</button>
 		</div>
 		<script
 		  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -53,7 +53,8 @@
 			  	loginBtn.click(redirectLogin);
 			  	
 			  	function redirectLogin() {
-			  		window.location.replace("../login/login.template.client.html");
+			  		console.log("clicked!");
+			  	    //window.location.replace("../login/login.template.client.html");
 			  	}
 		  </script>
 	</body>
