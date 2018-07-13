@@ -9,7 +9,7 @@ function UserServiceClient() {
     this.register = register;
     this.login = login;
     this.profile = profile;
-    //this.logout = logout;
+    this.logout = logout;
 
 	function createUser(user) {
     	var url = "/api/user";
@@ -31,7 +31,7 @@ function UserServiceClient() {
 	  }
 
 	function findUserById(id) {
-		var url = "/api/user" + id;
+		var url = "/api/user/" + id;
 		return fetch(url)
 			.then(function(response){
 				return response.json();
@@ -39,8 +39,7 @@ function UserServiceClient() {
 	}
 	  
 	function updateUser(id, user) {
-		var url = "/api/user" + id;
-
+		var url = "/api/user/" + id;
 		return fetch(url, {
 			"method" : "PUT",
 			"body" : JSON.stringify(user),
@@ -58,9 +57,9 @@ function UserServiceClient() {
 		var url = "/api/user/" + id;
 		return fetch(url, {
 			method: 'delete'
-			});
-	  }
-	
+		});
+	}
+
 	function register(user) {
 		var url = "/register";
 		return fetch(url, {
@@ -88,7 +87,7 @@ function UserServiceClient() {
 	}
 
 	function profile(user) {
-		var url = "/api/profile/" + user.username;
+		var url = "/profile/" + user.username;
 		return fetch(url, {
 			"method" : "POST",
 			"body" : JSON.stringify(user),
@@ -101,11 +100,10 @@ function UserServiceClient() {
 
 
 	
-/*	function logout() {
+	function logout() {
 		var url = "/api/logout";
 		return fetch(url, {
 			"method" : "POST",
-			"body" : 
 		})
-	}*/
+	}
 }

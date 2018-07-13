@@ -4,14 +4,12 @@
 	var $usernameFld, $passwordFld,
 		$password2Fld, $registerBtn;
 	
-	$(main);
-	
 	function main() {
 		$usernameFld = $('#username');
 		$passwordFld = $('#password');
 		$password2Fld = $('#password2');
 		$registerBtn = $('#registerBtn');
-		$registerBtn.unbind('click').click(registerUser);
+		$registerBtn.click(registerUser);
 	}
 	main();
 	
@@ -21,11 +19,12 @@
 		var password2Str = $password2Fld.val();
 		console.log("clicked!");
 		if(passwordStr != password2Str) {
-			alert('Passwords don\'t match!');
+            $('#passwordUnmatched').css('display','block');
 		}
 		
 		else {
-			var userObj = {
+            $('#passwordUnmatched').css('display','none');
+            var userObj = {
 					'username': usernameStr,
 					'password' : passwordStr
 			};
@@ -37,10 +36,11 @@
 	}
 	
 	function registrationSuccessful() {
+        $('#alertRegisterSuccess').css('display','block');
 		window.location.replace('/jquery/components/profile/profile.template.client.html');
 	}
 	
 	function registrationFailed() {
-		alert('Oops! Something went wrong :/');
+        $('#alertRegisterDanger').css('display','block');
 	}
 })();

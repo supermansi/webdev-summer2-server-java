@@ -22,11 +22,16 @@
 		
 		userServiceClient
 			.login(user)
-			.then(navigateToProfile);
+			.then(navigateToProfile, unsuccessful);
 	}
 	
 	function navigateToProfile() {
+        $('#alertLoginSuccess').css('display','block');
 		window.location.replace("../profile/profile.template.client.html");
+	}
+
+	function unsuccessful() {
+        $('#alertLoginDanger').css('display','block');
 	}
 	
 })();

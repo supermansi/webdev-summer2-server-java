@@ -14,3 +14,15 @@ input {
 #login-btn {
 	float: right;
 }
+
+#alertRegisterDanger {
+	display: none;
+}
+
+#alertRegisterSuccess {
+	display: none;
+}
+
+#passwordUnmatched {
+	display: none;
+}

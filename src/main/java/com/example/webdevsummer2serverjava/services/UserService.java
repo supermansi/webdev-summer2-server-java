@@ -25,10 +25,17 @@ public class UserService {
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user, HttpSession session) {
-		System.out.println(user.getFirstName());
+		//System.out.println(user.getFirstName());
 		User cu = userRepository.save(user);
 		session.setAttribute("currentUser", cu);		
 		return cu;
+	}
+
+	@PostMapping("/api/user")
+	public User createUser(@RequestBody User user, HttpSession session) {
+	    User cu = userRepository.save(user);
+	    session.setAttribute("currentUser", cu);
+	    return cu;
 	}
 	
 	@GetMapping("/checkLogin")
@@ -85,17 +92,9 @@ public class UserService {
 		session.invalidate();
 	}
 
-	@GetMapping("/api/profile/{username}")
+/*	@GetMapping("/api/profile/{username}")
 	public User findUserByUsername(@PathVariable("username") String val) {
-	    List<User> user = (List<User>) repository.findUserByUsername(val);
-	    if (user.isEmpty()) {
-	        return null;
-	    }
-	    else{
-	        System.out.println(user.get(0));
-	        return user.get(0);
-	    }
-
-	}
+	    return (User) userRepository.findUserByUsername(val);
+	}*/
 
 }

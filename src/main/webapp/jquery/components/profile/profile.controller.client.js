@@ -3,7 +3,10 @@
     var $username, $firstName, $lastName,
         $email, $phone, $dateOfBirth, $role;
     var $updateBtn;
+    var $logoutBtn;
     var currentUser = null;
+
+    var userServiceClient = new UserServiceClient();
 
     function init() {
 
@@ -17,6 +20,9 @@
 
         $updateBtn = $("#updateBtn");
         $updateBtn.unbind('click').click(updateUser);
+
+        $logoutBtn = $('#logoutBtn');
+        $logoutBtn.click(logoutUser);
 
         //$logoutBtn = $('logoutBtn');
         //$logoutBtn.click(logoutUser);
@@ -92,6 +98,9 @@
     }
 
     function logoutUser() {
-
+        userServiceClient.logout()
+            .then(function(response) {
+                return response.json();
+            });
     }
 })();
