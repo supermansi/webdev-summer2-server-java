@@ -25,6 +25,11 @@ public class ModuleService {
 	@Autowired
 	ModuleRepository moduleRepository;
 	
+	@GetMapping("/api/module")
+	public List<Module> findAllModules() {
+		return (List<Module>) moduleRepository.findAll();
+	}
+	
 	@PostMapping("/api/course/{courseId}/module")
 	public Module createModule(@PathVariable("courseId") int id,
 			@RequestBody Module newModule) {

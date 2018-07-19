@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Module {
+public class Lesson {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,9 +20,9 @@ public class Module {
 	private String title;
 	@ManyToOne
 	@JsonIgnore
-	private Course course;
-	@OneToMany(mappedBy="module")
-	private List<Lesson> lessons;
+	private Module module;
+	@OneToMany(mappedBy="lesson")
+	private List<Topic> topics;
 	
 	public int getId() {
 		return id;
@@ -30,25 +30,26 @@ public class Module {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Course getCourse() {
-		return course;
+	
+	public Module getModule() {
+		return module;
 	}
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setModule(Module module) {
+		this.module = module;
+	}
+		
+	public List<Topic> getTopics() {
+		return topics;
+	}
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
 	}
 	
-	public List<Lesson> getLessons() {
-		return lessons;
-	}
-	public void setLessons(List<Lesson> lessons) {
-		this.lessons = lessons;
-	}
-	
-
 }
