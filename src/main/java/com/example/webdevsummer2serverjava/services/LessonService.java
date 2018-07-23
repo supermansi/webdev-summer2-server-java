@@ -12,51 +12,57 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.webdevsummer2serverjava.models.Course;
+import com.example.webdevsummer2serverjava.models.Lesson;
 import com.example.webdevsummer2serverjava.models.Module;
 import com.example.webdevsummer2serverjava.repositories.CourseRepository;
 import com.example.webdevsummer2serverjava.repositories.LessonRepository;
 import com.example.webdevsummer2serverjava.repositories.ModuleRepository;
 
 @RestController
-@CrossOrigin(origins = "*")
-public class ModuleService {
+@CrossOrigin(origins="*")
+public class LessonService {
+	
 	@Autowired
 	CourseRepository courseRepository;
+	
 	@Autowired
 	ModuleRepository moduleRepository;
+	
 	@Autowired
 	LessonRepository lessonRepository;
 	
-	@GetMapping("/api/module")
-	public List<Module> findAllModules() {
-		return (List<Module>) moduleRepository.findAll();
+	@GetMapping("/api/lesson")
+	public Iterable<Lesson> findAllLessons() {
+		return (Iterable<Lesson>) lessonRepository.findAll();
 	}
 	
-	@PostMapping("/api/course/{courseId}/module")
-	public Module createModule(@PathVariable("courseId") int id,
-			@RequestBody Module newModule) {
-		Optional<Course> data = courseRepository.findById(id);
+	@DeleteMapping("/api/lesson/{lId}")
+	public void deleteLesson(@PathVariable("lId") int lessonId) {
+		lessonRepository.deleteById(lessonId);
+	}
+	
+	@PostMapping("/api/course/{cid}/module/{mid}/lesson")
+	public Lesson createLesson(@PathVariable("cid") int courseId,
+			@PathVariable("mid") int moduleId,
+			@RequestBody Lesson lesson) {
+		Optional<Module> data = moduleRepository.findById(moduleId);
 		if(data.isPresent()) {
-			Course course = data.get();
-			newModule.setCourse(course);
-			return moduleRepository.save(newModule);
+			Module module = data.get();
+			lesson.setModule(module);
+			return lessonRepository.save(lesson);
 		}
 		return null;
 	}
 	
-	@GetMapping("/api/course/{courseId}/module")
-	public List<Module> findAllModulesForCourse(@PathVariable("courseId") int courseId) {
-		Optional<Course> data = courseRepository.findById(courseId);
+	@GetMapping("/api/course/{cid}/module/{mid}/lesson")
+	public Iterable<Lesson> findAllLessonsForModule(@PathVariable("cid") int courseId,
+			@PathVariable("mid") int moduleId) {
+		Optional<Module> data = moduleRepository.findById(moduleId);
 		if(data.isPresent()) {
-			Course course = data.get();
-			return course.getModules();
+			Module module = data.get();
+			return module.getLessons();
 		}
 		return null;
 	}
 	
-	@DeleteMapping("/api/module/{mId}")
-	public void deleteModule(@PathVariable("mId") int moduleId) {
-		moduleRepository.deleteById(moduleId);
-	}
 }

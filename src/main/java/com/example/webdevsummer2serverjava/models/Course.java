@@ -1,5 +1,6 @@
 package com.example.webdevsummer2serverjava.models;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +16,12 @@ public class Course {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date modified;
+	private Date dateModified;
 	@OneToMany(mappedBy="course")
 	private List<Module> modules;
+	private String owner;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date timeModified;
 
 	public int getId() {
 		return id;
@@ -41,10 +45,10 @@ public class Course {
 	}
 
 	public Date getModified() {
-		return modified;
+		return dateModified;
 	}
 	public void setModified(Date modified) {
-		this.modified = modified;
+		this.dateModified = modified;
 	}
 	
 	public List<Module> getModules() {
@@ -52,5 +56,26 @@ public class Course {
 	}
 	public void setModules(List<Module> modules) {
 		this.modules = modules;
+	}
+	
+	public Date getDateModified() {
+		return dateModified;
+	}
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
+	}
+	
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
+	public Date getTimeModified() {
+		return timeModified;
+	}
+	public void setTimeModified(Date timeModified) {
+		this.timeModified = timeModified;
 	}
 }
