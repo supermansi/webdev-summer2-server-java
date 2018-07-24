@@ -17,10 +17,13 @@ public class Module {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String title;
+	
 	@ManyToOne
 	@JsonIgnore
 	private Course course;
+	
 	@OneToMany(mappedBy="module")
 	private List<Lesson> lessons;
 	

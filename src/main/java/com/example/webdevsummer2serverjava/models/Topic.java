@@ -14,6 +14,7 @@ public class Topic {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String title;
 	
 	@ManyToOne
