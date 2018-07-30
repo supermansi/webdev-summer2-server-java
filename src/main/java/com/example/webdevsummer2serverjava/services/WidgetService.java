@@ -23,6 +23,7 @@ public class WidgetService {
 	public List<Widget> saveWidgets(@RequestBody List<Widget> widgets) {
 		List<Widget> savedWidgets = new ArrayList<Widget>();
 		System.out.println(widgets);
+		widgetRepository.deleteAll();
 		for(Widget widget: widgets) {
 			savedWidgets.add(widgetRepository.save(widget));
 		}

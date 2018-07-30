@@ -22,6 +22,12 @@ public class Widget {
 	private int size;
 	private String text; // Paragraph Widget
 	
+	// Image Widget
+	private String url;
+	
+	// Link Widget
+	private String src;
+
 	public int getId() {
 		return id;
 	}
@@ -69,5 +75,19 @@ public class Widget {
 	}
 	public void setWidgetType(String widgetType) {
 		this.widgetType = widgetType;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public String getSrc() {
+		return src;
+	}
+	public void setSrc(String src) {
+		this.src = src;
 	}
 }
