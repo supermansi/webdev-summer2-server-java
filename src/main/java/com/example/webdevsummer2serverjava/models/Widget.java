@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Widget {
@@ -20,13 +23,14 @@ public class Widget {
 	
 	// Heading Widget
 	private int size;
-	private String text; // Paragraph Widget
+	private String text; // Link, Paragraph Widget
 	
-	// Image Widget
+	// Link, Image Widget
 	private String url;
 	
-	// Link Widget
-	private String src;
+	@ManyToOne
+	@JsonIgnore
+	private Topic topic;
 
 	public int getId() {
 		return id;
@@ -84,10 +88,10 @@ public class Widget {
 		this.url = url;
 	}
 	
-	public String getSrc() {
-		return src;
+	public Topic getTopic() {
+		return topic;
 	}
-	public void setSrc(String src) {
-		this.src = src;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 }
