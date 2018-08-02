@@ -49,6 +49,7 @@ public class TopicService {
 			@PathVariable("lid") int lessonId,
 			@RequestBody Topic topic) {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		System.out.println(topic);
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
 			topic.setLesson(lesson);
@@ -58,9 +59,10 @@ public class TopicService {
 		return null;
 	}
 	
-	@GetMapping("/api/course/{cid}/module/{mid}/lesson/{lid}")
+	@GetMapping("/api/course/{cid}/module/{mid}/lesson/{lid}/topic")
 	public Iterable<Topic> findAllTopicsForLesson(@PathVariable("lid") int lessonId) {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		System.out.println(data);
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
 			return lesson.getTopics();
