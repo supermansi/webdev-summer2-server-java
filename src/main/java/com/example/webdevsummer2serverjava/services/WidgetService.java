@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.webdevsummer2serverjava.models.Lesson;
 import com.example.webdevsummer2serverjava.models.Topic;
 import com.example.webdevsummer2serverjava.models.Widget;
 import com.example.webdevsummer2serverjava.repositories.TopicRepository;
@@ -29,13 +30,19 @@ public class WidgetService {
 	@Autowired
 	TopicRepository topicRepository;
 
-	@PostMapping("/api/widget")
-	public List<Widget> saveWidgets(@RequestBody List<Widget> widgets) {
+	@PostMapping("/api/topid/{topicId}/widget")
+	public List<Widget> saveWidgets(@PathVariable("topicId") int topicId, 
+									@RequestBody List<Widget> widgets) {
 		List<Widget> savedWidgets = new ArrayList<Widget>();
+		Optional<Topic> data = topicRepository.findById(topicId);
 		System.out.println(widgets);
 		widgetRepository.deleteAll();
-		for(Widget widget: widgets) {
-			savedWidgets.add(widgetRepository.save(widget));
+		if(data.isPresent()) {
+			Topic topic = data.get();
+			for(Widget widget: widgets) {
+				widget.setTopic(topic);
+				savedWidgets.add(widgetRepository.save(widget));
+			}
 		}
 		return savedWidgets;
 	}
