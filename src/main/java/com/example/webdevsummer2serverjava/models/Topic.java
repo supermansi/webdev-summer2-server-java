@@ -26,6 +26,9 @@ public class Topic {
 	
 	@OneToMany(mappedBy="topic")
 	private List<Widget> widgets;
+	
+	@OneToMany(mappedBy="topic")
+	private List<Assignment> assignments;
 
 	public int getId() {
 		return id;
@@ -53,6 +56,12 @@ public class Topic {
 	}
 	public void setWidgets(List<Widget> widgets) {
 		this.widgets = widgets;
+	}
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
 	}
 
 }

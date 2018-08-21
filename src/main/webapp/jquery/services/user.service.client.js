@@ -3,6 +3,7 @@ function UserServiceClient() {
 	this.createUser = createUser;
     this.findAllUsers = findAllUsers;
     this.findUserById = findUserById;
+    this.findUserByUserName = findUserByUserName;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
     
@@ -37,6 +38,10 @@ function UserServiceClient() {
 				return response.json();
 			});
 	}
+	
+	function findUserByUserName(userName) {
+        return fetch('/api/user/username/' + userName);
+    }
 	  
 	function updateUser(id, user) {
 		var url = "/api/user/" + id;

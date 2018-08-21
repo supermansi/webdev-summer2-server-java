@@ -77,6 +77,15 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
+	@GetMapping("/api/user/username/{userName}")
+    public User findUserByUsername(@PathVariable("userName") String userName) {
+      Optional<User> data = userRepository.findUserByUsername(userName);
+      if(data.isPresent()) {
+        return data.get();
+      }
+      return null;
+	}
+	
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
 		userRepository.deleteById(id);

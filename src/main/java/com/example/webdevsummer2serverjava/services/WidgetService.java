@@ -62,7 +62,7 @@ public class WidgetService {
 		return null;
 	}
 	
-	@GetMapping("/api/topic/{topidId}/widget")
+	@GetMapping("/api/topic/{topicId}/widget")
 	public List<Widget> findWidgetByTopicId(@PathVariable("topicId") int topicId){
 		Optional<Topic> data = topicRepository.findById(topicId);
 		if(data.isPresent()) {
