@@ -14,7 +14,6 @@
 	init();
 	
 	function login() {
-		console.log("clicked!");
 		var user = {
 				"username" : $username.val(),
 				"password" : $password.val()
@@ -22,7 +21,17 @@
 		
 		userServiceClient
 			.login(user)
-			.then(navigateToProfile, unsuccessful);
+			.then(function(response) {
+				return response.text();
+			})
+			.then(function(user) {
+				if(user.length) {
+					navigateToProfile();
+				}
+				else {
+					unsuccessful();
+				}
+			});
 	}
 	
 	function navigateToProfile() {

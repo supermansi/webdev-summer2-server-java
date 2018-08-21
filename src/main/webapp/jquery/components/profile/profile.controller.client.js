@@ -99,8 +99,6 @@
 
     function logoutUser() {
         userServiceClient.logout()
-            .then(function(response) {
-                return response.json();
-            });
+            .then(window.location.replace("../../../"));
     }
 })();

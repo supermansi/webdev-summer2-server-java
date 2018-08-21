@@ -27,7 +27,7 @@ public class Topic {
 	@OneToMany(mappedBy="topic")
 	private List<Widget> widgets;
 	
-	@OneToMany(mappedBy="assignment")
+	@OneToMany(mappedBy="topic")
 	private List<Assignment> assignments;
 
 	public int getId() {

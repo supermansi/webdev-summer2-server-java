@@ -30,8 +30,19 @@
 			};
 			
 			userServiceClient
-				.register(userObj)
-				.then(registrationSuccessful, registrationFailed)
+				.findUserByUserName(usernameStr)
+                .then(function(response){
+                    return response.text();
+                })
+                .then(function(user) {
+                	if(user.length) {
+                		registrationFailed();
+                	}
+                	else{
+                		userServiceClient.register(userObj)
+                		.then(registrationSuccessful);
+                	}
+                });
 		}
 	}
 	
