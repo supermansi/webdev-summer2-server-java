@@ -69,6 +69,13 @@ public class ExamQuestion {
 		this.questionType = questionType;
 	}
 	
+	public Exam getExam() {
+		return exam;
+	}
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+	
 /*	@ManyToOne
 	@JsonIgnore
 	private Exam exam;*/
