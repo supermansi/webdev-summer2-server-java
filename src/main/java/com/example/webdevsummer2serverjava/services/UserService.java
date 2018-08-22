@@ -107,13 +107,13 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/reset")
-	public void resetPassword(@RequestBody User user) {
+	public void resetPassword(@RequestBody String email) {
 		System.out.println("in java service");
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setFrom("mansijain2895@gmail.com");
-        mail.setTo(user.getEmail());
+        mail.setTo(email);
         mail.setSubject("Reset Password");
-        mail.setText("Click here to reset your password. http://localhost:8080/jquery/components/reset/resetPassword.template.client.html");
+        mail.setText("Click here to reset your password. https://webdev-server-java-mansijain.herokuapp.com/jquery/components/login/resetPassword.template.client.html");
         try {
         	System.out.println(mail);
             javaMailSender.send(mail);
