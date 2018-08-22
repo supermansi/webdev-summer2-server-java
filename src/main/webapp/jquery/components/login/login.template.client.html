@@ -32,6 +32,7 @@
 					class="form-control">
 		</div>
 		<button class="btn btn-outline-primary" id="loginBtn">Login</button>
+		<button class="btn btn-outline-primary" id="forgot-btn">Forgot Password?</button>
 		<button class="btn btn-outline-primary" id="register-btn">Not yet a user? Register here!</button>
 	</div>
 	<script
@@ -46,6 +47,13 @@
 		  	
 		  	function redirectRegister(){
 		  		window.location.replace("../register/register.template.client.html");
+		  	}
+		  	
+		  	var forgotBtn =  $('#forgot-btn');
+		  	forgotBtn.click(forgot);
+		  	
+		  	function forgot(){
+		  		window.location.replace("forgotPassword.template.client.html");
 		  	}
 	</script>
 </body>

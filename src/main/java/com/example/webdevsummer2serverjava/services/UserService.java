@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.example.webdevsummer2serverjava.models.User;
 import com.example.webdevsummer2serverjava.repositories.UserRepository;
@@ -22,6 +24,9 @@ public class UserService {
 		
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+    JavaMailSender javaMailSender;
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user, HttpSession session) {
@@ -99,6 +104,24 @@ public class UserService {
 	@PostMapping("/api/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
+	}
+	
+	@PostMapping("/api/reset")
+	public void resetPassword(@RequestBody User user) {
+		System.out.println("in java service");
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom("mansijain2895@gmail.com");
+        mail.setTo(user.getEmail());
+        mail.setSubject("Reset Password");
+        mail.setText("Click here to reset your password. http://localhost:8080/jquery/components/reset/resetPassword.template.client.html");
+        try {
+        	System.out.println(mail);
+            javaMailSender.send(mail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Can't send message");
+        }
+
 	}
 
 /*	@GetMapping("/api/profile/{username}")

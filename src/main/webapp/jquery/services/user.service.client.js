@@ -6,6 +6,7 @@ function UserServiceClient() {
     this.findUserByUserName = findUserByUserName;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
+    this.resetPassword = resetPassword;
     
     this.register = register;
     this.login = login;
@@ -103,7 +104,16 @@ function UserServiceClient() {
 		})
 	}
 
-
+	function resetPassword(email) {
+		console.log("In service client");
+		return fetch("/api/reset", {
+			"method" : "POST",
+			"body" : JSON.stringify(email),
+			"headers" : {
+				"content-type" : "application/json"
+			}
+		});
+	}
 	
 	function logout() {
 		var url = "/api/logout";

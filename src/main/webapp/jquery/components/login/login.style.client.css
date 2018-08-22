@@ -18,3 +18,7 @@ input {
 #alertLoginSuccess {
 	display: none;
 }
+
+#alertResetPassword {
+	display: none;
+}
